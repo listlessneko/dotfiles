@@ -10,3 +10,6 @@ fi
 
 # Symlink nvim config
 ln -sf ~/.config/coderv2/dotfiles/nvim ~/.config/nvim
+
+# Symlink bashrc
+ln -sf ~/.config/coderv2/dotfiles/.bashrc ~/.bashrc
