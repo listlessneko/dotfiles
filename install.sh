@@ -13,3 +13,16 @@ ln -sf ~/.config/coderv2/dotfiles/nvim ~/.config/nvim
 
 # Symlink bashrc
 ln -sf ~/.config/coderv2/dotfiles/.bashrc ~/.bashrc
+
+# Install tmux if not already installed or wrong version
+if ! command -v tmux &> /dev/null || [[ $(tmux -V) != *"3.5a"* ]]; then
+  sudo apt install -y tmux
+fi
+
+# Install TPM if not already installed
+if [ ! -d ~/.tmux/plugins/tpm ]; then
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
+
+# Symlink tmux config
+ln -sf ~/.config/coderv2/dotfiles/.tmux.conf ~/.tmux.conf
