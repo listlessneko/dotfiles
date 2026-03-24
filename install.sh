@@ -15,6 +15,7 @@ if ! command -v nvim &> /dev/null || [[ $(nvim --version | head -1) != *"v0.10.0
 fi
 
 # Symlink nvim config
+rm -rf ~/.config/nvim
 ln -sf ~/.config/coderv2/dotfiles/nvim ~/.config/nvim
 
 # Symlink bashrc
