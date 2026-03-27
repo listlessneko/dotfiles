@@ -26,6 +26,11 @@ if ! command -v tmux &> /dev/null || [[ $(tmux -V) != *"3.5a"* ]]; then
   sudo apt install -y tmux
 fi
 
+# Install xclip
+if ! command -v xclip &> /dev/null; then
+  sudo apt install -y xclip
+fi
+
 # Install TPM
 if [ ! -d ~/.tmux/plugins/tpm ]; then
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
