@@ -1,10 +1,12 @@
 #!/bin/bash
 
+DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 # Populate GitHub's SSH host keys before any git operations
 mkdir -p ~/.ssh
 curl -s https://api.github.com/meta | python3 -c "import sys,json; [print(f'github.com {k}') for k in json.load(sys.stdin)['ssh_keys']]" > ~/.ssh/known_hosts
 
-#Install ripgrep
+# Install ripgrep
 if ! command -v rg &> /dev/null; then
   sudo apt install -y ripgrep
 fi
@@ -20,10 +22,10 @@ fi
 
 # Symlink nvim config
 rm -rf ~/.config/nvim
-ln -sf ~/.config/coderv2/dotfiles/nvim ~/.config/nvim
+ln -sf "$DOTFILES_DIR/nvim" ~/.config/nvim
 
 # Symlink bashrc
-ln -sf ~/.config/coderv2/dotfiles/.bashrc ~/.bashrc
+ln -sf "$DOTFILES_DIR/.bashrc" ~/.bashrc
 
 # Install tmux 3.5a
 if ! command -v tmux &> /dev/null || [[ $(tmux -V) != *"3.5a"* ]]; then
@@ -40,5 +42,8 @@ if [ ! -d ~/.tmux/plugins/tpm ]; then
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
+# Install tmux plugins
+~/.tmux/plugins/tpm/bin/install_plugins
+
 # Symlink tmux config
-ln -sf ~/.config/coderv2/dotfiles/.tmux.conf ~/.tmux.conf
+ln -sf "$DOTFILES_DIR/.tmux.conf" ~/.tmux.conf
