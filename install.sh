@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Populate GitHub's SSH host keys before any git operations
+mkdir -p ~/.ssh
+curl -s https://api.github.com/meta | python3 -c "import sys,json; [print(f'github.com {k}') for k in json.load(sys.stdin)['ssh_keys']]" > ~/.ssh/known_hosts
+
 #Install ripgrep
 if ! command -v rg &> /dev/null; then
   sudo apt install -y ripgrep
