@@ -12,3 +12,5 @@ Thumbs.db
 
 nvim/.luarc.json
 nvim/.git/
+
+.claude/
