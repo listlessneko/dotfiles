@@ -22,6 +22,19 @@ vim.api.nvim_create_autocmd(
 {pattern = '*', command = 'set nocursorline', group = cursorGrp}
 )
 
+-- Override vim-tmux-navigator's t-mode maps after all plugins load.
+-- IsFZF() misfires for opencode (which spawns fzf subprocesses), passing keys
+-- through to the terminal instead of navigating.
+vim.api.nvim_create_autocmd('VimEnter', {
+  once = true,
+  callback = function()
+    vim.keymap.set('t', '<C-h>', '<C-\\><C-n>:TmuxNavigateLeft<CR>',  { desc = 'Navigate left' })
+    vim.keymap.set('t', '<C-j>', '<C-\\><C-n>:TmuxNavigateDown<CR>',  { desc = 'Navigate down' })
+    vim.keymap.set('t', '<C-k>', '<C-\\><C-n>:TmuxNavigateUp<CR>',    { desc = 'Navigate up' })
+    vim.keymap.set('t', '<C-l>', '<C-\\><C-n>:TmuxNavigateRight<CR>', { desc = 'Navigate right' })
+  end,
+})
+
 -- Enable spell checking for certain file types
 vim.api.nvim_create_autocmd(
 {'BufRead', 'BufNewFile'},

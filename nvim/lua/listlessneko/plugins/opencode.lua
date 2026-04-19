@@ -24,7 +24,21 @@ return {
 
       vim.keymap.set({ "n", "x" }, "<C-a>", function() require("opencode").ask("@this: ", { submit = true }) end, { desc = "Ask opencode…" })
       vim.keymap.set({ "n", "x" }, "<C-x>", function() require("opencode").select() end,                          { desc = "Execute opencode action…" })
-      vim.keymap.set({ "n", "t" }, "<C-.>", function() require("opencode").toggle() end,                          { desc = "Toggle opencode" })
+      vim.keymap.set("n", "<C-.>", function()
+        require("opencode").toggle()
+        vim.schedule(function()
+          for _, win in ipairs(vim.api.nvim_list_wins()) do
+            local buf = vim.api.nvim_win_get_buf(win)
+            if vim.bo[buf].buftype == "terminal"
+              and vim.api.nvim_buf_get_name(buf):find("opencode") then
+              vim.api.nvim_set_current_win(win)
+              vim.cmd("startinsert")
+              return
+            end
+          end
+        end)
+      end, { desc = "Toggle opencode" })
+      vim.keymap.set("t", "<C-.>", function() require("opencode").toggle() end, { desc = "Toggle opencode" })
 
       vim.keymap.set({ "n", "x" }, "go",  function() return require("opencode").operator("@this ") end,        { desc = "Add range to opencode", expr = true })
       vim.keymap.set("n",          "goo", function() return require("opencode").operator("@this ") .. "_" end, { desc = "Add line to opencode", expr = true })
