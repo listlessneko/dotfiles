@@ -34,12 +34,13 @@ The install script handles both macOS and Linux. It will:
 Built on [lazy.nvim](https://github.com/folke/lazy.nvim). Requires Neovim 0.11+.
 
 **Key plugins:**
-- LSP via `nvim-lspconfig` + `mason.nvim` (auto-installs language servers)
+- LSP via native `vim.lsp.config` API + `mason.nvim` (auto-installs language servers)
 - Completion via `nvim-cmp` + `LuaSnip`
 - Fuzzy finding via `telescope.nvim`
 - File tree via `neo-tree.nvim`
 - Syntax highlighting via `nvim-treesitter`
-- Git integration via `mini.nvim`
+- Git integration via `gitsigns.nvim` + `lazygit.nvim` (lazygit optional)
+- AI coding via `opencode.nvim` (Linux only, guarded by executable check)
 - Theme: Catppuccin (custom colors)
 
 **LSP servers auto-installed:**
@@ -53,6 +54,12 @@ Built on [lazy.nvim](https://github.com/folke/lazy.nvim). Requires Neovim 0.11+.
 | `K` | Hover documentation |
 | `<leader>rn` | Rename symbol |
 | `gl` | Open diagnostic float |
+| `<leader>f` | Find files (git-aware) |
+| `<leader>gg` | Open lazygit (if installed) |
+| `<leader>g` | Git actions (blame, stage, diff, etc.) |
+| `]h` / `[h` | Next/prev git hunk |
+| `<leader>\|` | Vertical split |
+| `<leader>-` | Horizontal split |
 | `<C-h/j/k/l>` | Navigate tmux/nvim panes |
 
 ## Tmux
