@@ -56,3 +56,8 @@ git_prompt() {
 export PS1='[\t] <\u> \W/$(git_prompt)>> '
 export EDITOR=nvim
 export VISUAL=nvim
+
+# opencode
+if [ -d "$HOME/.opencode/bin" ]; then
+  export PATH="$HOME/.opencode/bin:$PATH"
+fi
