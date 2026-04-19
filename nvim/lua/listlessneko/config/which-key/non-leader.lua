@@ -1,11 +1,8 @@
 return {
+  { "]h", "<cmd>lua require('gitsigns').next_hunk()<cr>", desc = "Next hunk" },
+  { "[h", "<cmd>lua require('gitsigns').prev_hunk()<cr>", desc = "Prev hunk" },
+  { "ih", ":<C-U>Gitsigns select_hunk<CR>", desc = "Select hunk", mode = { "o", "x" } },
   { "g", group = { name = "Go To" } },
-  { "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", desc = "Goto definition", prefix = "" },
-  { "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", desc = "Goto declaration" },
-  { "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", desc = "Goto implementation" },
-  { "gl", "<cmd>lua vim.diagnostic.open_float()<cr>", desc = "Goto float diagnostics" },
-  { "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", desc = "Goto type definition" },
-  { "gr", "<cmd>lua vim.lsp.buf.references()<cr>", desc = "Goto references" },
 }
 -- return {
 --   g = {

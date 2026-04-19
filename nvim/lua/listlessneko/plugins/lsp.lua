@@ -47,11 +47,6 @@ return {
         map("gr", vim.lsp.buf.references, "Goto References")
         map("gi", vim.lsp.buf.implementation, "Goto Implementation")
         map("go", vim.lsp.buf.type_definition, "Type Definition")
-        map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "Document Symbols")
-        map("<leader>ws", require("telescope.builtin").lsp_workspace_symbols, "Workspace Symbols")
-        map("<leader>Ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Workspace Symbols")
-
-        map("<leader>rn", vim.lsp.buf.rename, "Rename all references")
         map("gl", vim.diagnostic.open_float, "Open Diagnostic Float")
         map("K", function()
           vim.lsp.buf.hover({ border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" } })
