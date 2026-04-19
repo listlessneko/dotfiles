@@ -1,6 +1,3 @@
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
 return {
   jsonls = {
     settings = {
@@ -63,11 +60,9 @@ return {
   html = {
     cmd = { "vscode-html-language-server", "--stdio" },
     filetypes = { "html" },
-    capabilities = capabilities,
   },
   cssls = {
     cmd = { "vscode-css-language-server", "--stdio" },
     filetypes = { "css", "scss", "less" },
-    capabilities = capabilities,
   },
 }

@@ -2,16 +2,15 @@ return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
-    { 
-      "williamboman/mason.nvim", 
+    {
+      "williamboman/mason.nvim",
       version = "^1.0.0",
       config = true
     },
-    { 
-      "williamboman/mason-lspconfig.nvim", 
+    {
+      "williamboman/mason-lspconfig.nvim",
       version = "^1.0.0",
     },
-    -- "williamboman/mason-lspconfig.nvim",
     { "j-hui/fidget.nvim",       opts = {} },
     "folke/neodev.nvim",
     { "b0o/schemastore.nvim" },
@@ -28,10 +27,12 @@ return {
         },
       },
     })
+
+    local servers = require("listlessneko.plugins.lsp.servers")
+
     require("mason-lspconfig").setup({
-      ensure_installed = vim.tbl_keys(require("listlessneko.plugins.lsp.servers")),
+      ensure_installed = vim.tbl_keys(servers),
     })
-    require("lspconfig.ui.windows").default_options.border = "single"
 
     require("neodev").setup()
 
@@ -42,27 +43,21 @@ return {
           vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
         end
 
-        map("gd", require("telescope.builtin").lsp_definitions, "Goto Definition")
-        map("gr", require("telescope.builtin").lsp_references, "Goto References")
-        map("gi", require("telescope.builtin").lsp_implementations, "Goto Implementation")
-        map("go", require("telescope.builtin").lsp_type_definitions, "Type Definition")
+        map("gd", vim.lsp.buf.definition, "Goto Definition")
+        map("gr", vim.lsp.buf.references, "Goto References")
+        map("gi", vim.lsp.buf.implementation, "Goto Implementation")
+        map("go", vim.lsp.buf.type_definition, "Type Definition")
         map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "Document Symbols")
         map("<leader>ws", require("telescope.builtin").lsp_workspace_symbols, "Workspace Symbols")
         map("<leader>Ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Workspace Symbols")
 
-        map("<leader>rn", vim.lsp.buf.rename, "Rename all references" )
-
+        map("<leader>rn", vim.lsp.buf.rename, "Rename all references")
         map("gl", vim.diagnostic.open_float, "Open Diagnostic Float")
-
-        map("K", vim.lsp.buf.hover, "Hover Documentation")
-        vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-          -- border = "single",
-          border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-        })
-
+        map("K", function()
+          vim.lsp.buf.hover({ border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" } })
+        end, "Hover Documentation")
         map("gs", vim.lsp.buf.signature_help, "Signature Documentation")
         map("gD", vim.lsp.buf.declaration, "Goto Declaration")
-
         map("<leader>v", "<cmd>vsplit | lua vim.lsp.buf.definition()<cr>", "Goto Definition in Vertical Split")
 
         -- Thank you teej
@@ -82,32 +77,26 @@ return {
       end,
     })
 
-    -- local capabilities = vim.lsp.protocol.make_client_capabilities()
-    -- capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+    local capabilities = vim.tbl_deep_extend("force",
+      vim.lsp.protocol.make_client_capabilities(),
+      require("cmp_nvim_lsp").default_capabilities()
+    )
 
-    local mason_lspconfig = require("mason-lspconfig")
+    vim.lsp.config('*', { capabilities = capabilities })
 
-    mason_lspconfig.setup_handlers({
-      function(server_name)
-        require("lspconfig")[server_name].setup({
-          capabilities = capabilities,
-          -- on_attach = require("listlessneko.plugins.lsp.on_attach").on_attach,
-          settings = require("listlessneko.plugins.lsp.servers")[server_name],
-          filetypes = (require("listlessneko.plugins.lsp.servers")[server_name] or {}).filetypes,
-        })
-      end,
-    })
+    for server_name, config in pairs(servers) do
+      vim.lsp.config(server_name, config)
+    end
 
-    -- Gleam LSP
-    -- For some reason mason doesn't work with gleam lsp
-    require("lspconfig").gleam.setup({
+    vim.lsp.enable(vim.tbl_keys(servers))
+
+    -- Gleam LSP (not managed by mason)
+    vim.lsp.config('gleam', {
       cmd = { "gleam", "lsp" },
       filetypes = { "gleam" },
-      root_dir = require("lspconfig").util.root_pattern("gleam.toml", ".git"),
-      capabilities = capabilities,
+      root_markers = { "gleam.toml", ".git" },
     })
+    vim.lsp.enable('gleam')
 
     vim.diagnostic.config({
       title = false,
@@ -125,7 +114,7 @@ return {
       },
     })
 
-    local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+    local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
     for type, icon in pairs(signs) do
       local hl = "DiagnosticSign" .. type
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
