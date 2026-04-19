@@ -1,6 +1,9 @@
 return {
   'heavenshell/vim-jsdoc',
   config = function()
-    vim.cmd('autocmd FileType javascript,typescript,jsdoc syntax enable')
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = { "javascript", "typescript", "jsdoc" },
+      callback = function() vim.cmd("syntax enable") end,
+    })
   end
 }

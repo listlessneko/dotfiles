@@ -1,4 +1,4 @@
-vim.cmd('let g:netrw_liststyle = 3')
+vim.g.netrw_liststyle = 3
 vim.g.have_nerd_font = true
 
 vim.opt.title = true -- set the title of window to the value of the titlestring
