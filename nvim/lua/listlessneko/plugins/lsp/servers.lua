@@ -57,6 +57,7 @@ return {
   -- },
 
   zls = {},
+  clangd = {},
   html = {
     cmd = { "vscode-html-language-server", "--stdio" },
     filetypes = { "html" },

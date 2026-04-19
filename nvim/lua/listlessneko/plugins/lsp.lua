@@ -102,7 +102,14 @@ return {
       title = false,
       underline = true,
       virtual_text = true,
-      signs = true,
+      signs = {
+        text = {
+          [vim.diagnostic.severity.ERROR] = " ",
+          [vim.diagnostic.severity.WARN] = " ",
+          [vim.diagnostic.severity.HINT] = "󰠠 ",
+          [vim.diagnostic.severity.INFO] = " ",
+        },
+      },
       update_in_insert = false,
       severity_sort = true,
       float = {
@@ -113,11 +120,5 @@ return {
         prefix = "",
       },
     })
-
-    local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-    for type, icon in pairs(signs) do
-      local hl = "DiagnosticSign" .. type
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-    end
   end,
 }
