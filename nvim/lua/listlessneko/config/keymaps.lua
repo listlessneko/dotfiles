@@ -35,5 +35,20 @@ vim.keymap.set('n', 'N', 'Nzzzv')
 -- Disable ex mode
 vim.keymap.set('n', 'Q', '<nop>', { desc = 'Disabled' })
 
+-- Window resize mode: press once, then h/j/k/l repeatedly; any other key exits
+vim.keymap.set('n', '<C-w>m', function()
+  vim.notify('Resize mode: h/l (width)  j/k (height)  <any> to exit', vim.log.levels.INFO)
+  while true do
+    local char = vim.fn.getcharstr()
+    if     char == 'h' then vim.cmd('wincmd <')
+    elseif char == 'l' then vim.cmd('wincmd >')
+    elseif char == 'j' then vim.cmd('wincmd -')
+    elseif char == 'k' then vim.cmd('wincmd +')
+    else break
+    end
+    vim.cmd('redraw')
+  end
+end, { desc = 'Window resize mode' })
+
 -- Clear search highlight
 vim.keymap.set('n', '<Esc>', ':nohlsearch<CR>', { silent = true, desc = 'Clear search highlight' })
