@@ -26,7 +26,10 @@ return {
   -- (r)eplace
   { "<leader>r",
     group = { name = "Replace" },
-    { "<leader>re", ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>', desc = "Replace current word", mode = "n" },
+    { "<leader>re", ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>',  desc = "Replace current word",                    mode = "n" },
+    { "<leader>rc", ':%s/<C-r><C-w>/<C-r><C-w>/gc<Left><Left><Left>',        desc = "Replace current word (confirm)",           mode = "n" },
+    { "<leader>rs", 'y:%s/\\V<C-r>"//gc<Left><Left><Left>',                   desc = "Replace selection in file (confirm)",      mode = "v" },
+    { "<leader>rr", ":s///gc<Left><Left><Left><Left>",                        desc = "Replace within selection (confirm)",       mode = "v" },
   },
 
   -- (s)earch

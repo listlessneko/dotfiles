@@ -58,6 +58,9 @@ Built on [lazy.nvim](https://github.com/folke/lazy.nvim). Requires Neovim 0.11+.
 | `<leader>gg` | Open lazygit (if installed) |
 | `<leader>g` | Git actions (blame, stage, diff, etc.) |
 | `]h` / `[h` | Next/prev git hunk |
+| `<leader>rc` | Replace word under cursor (confirm each) |
+| `<leader>rs` | Replace visual selection in file (confirm each) |
+| `<leader>rr` | Replace pattern within visual selection (confirm each) |
 | `<leader>\|` | Vertical split |
 | `<leader>-` | Horizontal split |
 | `<C-h/j/k/l>` | Navigate tmux/nvim panes |
