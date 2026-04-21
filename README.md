@@ -47,22 +47,52 @@ Built on [lazy.nvim](https://github.com/folke/lazy.nvim). Requires Neovim 0.11+.
 `lua_ls`, `ts_ls`, `pyright`, `bashls`, `jsonls`, `yamlls`, `html`, `cssls`, `clangd`, `zls`, `terraformls`, `vimls`, `solidity_ls_nomicfoundation`
 
 **Key keymaps:**
+
+| Key | Action |
+|-----|--------|
+| `<leader>w` | Save |
+| `<leader>f` | Find files (git-aware) |
+| `<leader>sf` | Find files (CWD) |
+| `<leader>sg` | Live grep |
+| `<leader>ss` | Search current buffer |
+| `<leader>o` | Open buffer picker |
+| `<Up>` / `<Down>` | Next / prev buffer |
+
 | Key | Action |
 |-----|--------|
 | `gd` | Goto definition |
 | `gr` | Goto references |
 | `K` | Hover documentation |
-| `<leader>rn` | Rename symbol |
 | `gl` | Open diagnostic float |
-| `<leader>f` | Find files (git-aware) |
+| `<leader>rn` | Rename symbol |
+| `<leader>la` | Code action |
+| `<leader>lf` | Format |
+| `<leader>lw` | Diagnostics |
+
+| Key | Action |
+|-----|--------|
 | `<leader>gg` | Open lazygit (if installed) |
 | `<leader>g` | Git actions (blame, stage, diff, etc.) |
-| `]h` / `[h` | Next/prev git hunk |
-| `<leader>rc` | Replace word under cursor (confirm each) |
-| `<leader>rs` | Replace visual selection in file (confirm each) |
-| `<leader>rr` | Replace pattern within visual selection (confirm each) |
+| `]h` / `[h` | Next / prev git hunk |
+| `<leader>gs` | Stage hunk |
+| `<leader>gb` | Blame line |
+| `<leader>gd` | Diff vs HEAD |
+
+| Key | Action |
+|-----|--------|
+| `<leader>y` / `<leader>Y` | Yank to system clipboard |
+| `<leader>d` | Delete to void |
+| `<leader>p` | Paste over selection (void delete) |
+| `J` / `K` | Move selected lines down / up |
+| `kj` / `jk` | Exit insert mode |
+
+| Key | Action |
+|-----|--------|
 | `<leader>\|` | Vertical split |
 | `<leader>-` | Horizontal split |
+| `<leader>=` | Equalize splits |
+| `<leader>x` | Close split |
+| `<C-w>m` | Window resize mode (h/j/k/l, any key exits) |
 | `<C-h/j/k/l>` | Navigate tmux/nvim panes |
 
 ## Tmux
