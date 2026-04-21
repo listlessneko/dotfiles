@@ -69,6 +69,9 @@ ln -sf "$DOTFILES_DIR/nvim" ~/.config/nvim
 # Symlink bashrc
 ln -sf "$DOTFILES_DIR/.bashrc" ~/.bashrc
 
+# Symlink zshrc
+ln -sf "$DOTFILES_DIR/.zshrc" ~/.zshrc
+
 # Install TPM
 if [ ! -d ~/.tmux/plugins/tpm ]; then
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
