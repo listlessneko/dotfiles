@@ -96,7 +96,7 @@ return {
     vim.diagnostic.config({
       title = false,
       underline = true,
-      virtual_text = true,
+      virtual_lines = { current_line = true },
       signs = {
         text = {
           [vim.diagnostic.severity.ERROR] = " ",

@@ -35,6 +35,16 @@ vim.api.nvim_create_autocmd('VimEnter', {
   end,
 })
 
+-- Keep line wrapping on in diff windows (Vim disables it by default when 'diff' is set)
+vim.api.nvim_create_autocmd('OptionSet', {
+  pattern = 'diff',
+  callback = function()
+    if vim.v.option_new == 'v:true' or vim.v.option_new == true then
+      vim.wo.wrap = true
+    end
+  end,
+})
+
 -- Enable spell checking for certain file types
 vim.api.nvim_create_autocmd(
 {'BufRead', 'BufNewFile'},
