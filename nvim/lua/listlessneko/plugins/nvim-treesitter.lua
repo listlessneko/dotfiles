@@ -1,10 +1,11 @@
 return {
   "nvim-treesitter/nvim-treesitter",
+  branch = "master", -- master is frozen/stable; `main` is a full rewrite with a new API
   version = false,
   build = ":TSUpdate",
   event = { "BufReadPost", "BufNewFile" },
   dependencies = {
-    "nvim-treesitter/nvim-treesitter-textobjects",
+    { "nvim-treesitter/nvim-treesitter-textobjects", branch = "master" },
   },
   config = function()
     require("nvim-treesitter.configs").setup({
