@@ -89,31 +89,36 @@ return {
           },
           include_surrounding_whitespace = false,
         },
+        move = {
+          enable = true,
+          set_jumps = true, -- whether to set jumps in the jumplist
+          goto_previous_start = {
+            ["[f"] = { query = "@function.outer", desc = "Previous function" },
+            ["[c"] = { query = "@class.outer", desc = "Previous class" },
+            ["[p"] = { query = "@parameter.inner", desc = "Previous parameter" },
+            ["<leader>bf"] = { query = "@function.outer", desc = "Previous function" },
+            ["<leader>bc"] = { query = "@class.outer", desc = "Previous class" },
+            ["<leader>bp"] = { query = "@parameter.inner", desc = "Previous parameter" },
+          },
+          goto_next_start = {
+            ["]f"] = { query = "@function.outer", desc = "Next function" },
+            ["]c"] = { query = "@class.outer", desc = "Next class" },
+            ["]p"] = { query = "@parameter.inner", desc = "Next parameter" },
+            ["<leader>nf"] = { query = "@function.outer", desc = "Next function" },
+            ["<leader>nc"] = { query = "@class.outer", desc = "Next class" },
+            ["<leader>np"] = { query = "@parameter.inner", desc = "Next parameter" },
+          },
+        },
+        -- swap = {
+        --   enable = true,
+        --   swap_next = {
+        --     ["<leader>a"] = "@parameter.inner",
+        --   },
+        --   swap_previous = {
+        --     ["<leader>A"] = "@parameter.inner",
+        --   },
+        -- },
       },
-      -- move = {
-      --     enable = true,
-      --     set_jumps = true, -- whether to set jumps in the jumplist
-      --     goto_previous_start = {
-      --       ["[f"] = { query = "@function.outer", desc = "Previous function" },
-      --       ["[c"] = { query = "@class.outer", desc = "Previous class" },
-      --       ["[p"] = { query = "@parameter.inner", desc = "Previous parameter" },
-      --     },
-      --     goto_next_start = {
-      --       ["]f"] = { query = "@function.outer", desc = "Next function" },
-      --       ["]c"] = { query = "@class.outer", desc = "Next class" },
-      --       ["]p"] = { query = "@parameter.inner", desc = "Next parameter" },
-      --     },
-      --   },
-      --   swap = {
-      --     enable = true,
-      --     swap_next = {
-      --       ["<leader>a"] = "@parameter.inner",
-      --     },
-      --     swap_previous = {
-      --       ["<leader>A"] = "@parameter.inner",
-      --     },
-      --   },
-      -- },
     })
   end,
 }
