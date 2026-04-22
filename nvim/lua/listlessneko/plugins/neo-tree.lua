@@ -87,6 +87,8 @@ return {
           handler = function(args)
             if args.position == 'left' or args.position == 'right' then
               vim.cmd('wincmd =')
+            elseif args.position == 'float' then
+              vim.wo[args.winid].winblend = 10
             end
           end,
         },
