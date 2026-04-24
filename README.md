@@ -39,6 +39,7 @@ Built on [lazy.nvim](https://github.com/folke/lazy.nvim). Requires Neovim 0.11+.
 - Fuzzy finding via `telescope.nvim`
 - File tree via `neo-tree.nvim`
 - Syntax highlighting via `nvim-treesitter`
+- In-buffer markdown rendering via `render-markdown.nvim`
 - Git integration via `gitsigns.nvim` + `lazygit.nvim` (lazygit optional)
 - AI coding via `opencode.nvim` (Linux only, guarded by executable check)
 - Theme: Catppuccin (custom colors)
