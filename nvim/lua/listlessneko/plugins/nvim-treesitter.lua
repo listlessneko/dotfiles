@@ -95,7 +95,6 @@ return {
           goto_previous_start = {
             ["[f"] = { query = "@function.outer", desc = "Previous function" },
             ["[c"] = { query = "@class.outer", desc = "Previous class" },
-            ["[p"] = { query = "@parameter.inner", desc = "Previous parameter" },
             ["<leader>bf"] = { query = "@function.outer", desc = "Previous function" },
             ["<leader>bc"] = { query = "@class.outer", desc = "Previous class" },
             ["<leader>bp"] = { query = "@parameter.inner", desc = "Previous parameter" },
@@ -103,7 +102,6 @@ return {
           goto_next_start = {
             ["]f"] = { query = "@function.outer", desc = "Next function" },
             ["]c"] = { query = "@class.outer", desc = "Next class" },
-            ["]p"] = { query = "@parameter.inner", desc = "Next parameter" },
             ["<leader>nf"] = { query = "@function.outer", desc = "Next function" },
             ["<leader>nc"] = { query = "@class.outer", desc = "Next class" },
             ["<leader>np"] = { query = "@parameter.inner", desc = "Next parameter" },
