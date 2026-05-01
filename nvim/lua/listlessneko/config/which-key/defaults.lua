@@ -76,6 +76,16 @@ return {
     { "<leader>gC", require("telescope.builtin").git_bcommits,                                 desc = "Checkout commit (current file)" },
     { "<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>",                                         desc = "Git Diff" },
     { "<leader>gD", "<cmd>DiffviewOpen<cr>",                                                   desc = "Diffview (working tree)" },
+    { "<leader>gL", "<cmd>DiffviewOpen HEAD~1<cr>",                                            desc = "Diffview last commit" },
+    { "<leader>gP",
+      function()
+        vim.ui.input({ prompt = "Diffview range: " }, function(input)
+          if input and input ~= "" then vim.cmd("DiffviewOpen " .. input) end
+        end)
+      end,
+      desc = "Diffview range (prompt)",
+    },
+    { "<leader>gQ", "<cmd>DiffviewClose<cr>",                                                  desc = "Diffview close" },
     { "<leader>gh", "<cmd>DiffviewFileHistory %<cr>",                                          desc = "Diffview file history" },
     { "<leader>gv", "<cmd>lua require('gitsigns').toggle_deleted()<cr>",                       desc = "Toggle deleted lines" },
     { "<leader>gU", ":UndotreeToggle<CR>",                                                     desc = "Toggle UndoTree" },
