@@ -99,3 +99,7 @@ fi
 
 # Symlink tmux config
 ln -sf "$DOTFILES_DIR/.tmux.conf" ~/.tmux.conf
+
+# Symlink tmux scripts
+mkdir -p ~/.tmux/scripts
+ln -sf "$DOTFILES_DIR/tmux/main-vertical-right.sh" ~/.tmux/scripts/main-vertical-right.sh
