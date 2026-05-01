@@ -3,6 +3,7 @@
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 OS="$(uname)"
 NVIM_VERSION="v0.11.7"
+LAZYGIT_VERSION="0.61.1"
 
 # Populate GitHub's SSH host keys before any git operations
 mkdir -p ~/.ssh
@@ -35,6 +36,14 @@ if [[ "$OS" == "Darwin" ]]; then
     brew install tmux
   fi
 
+  # Install lazygit
+  if ! command -v lazygit &> /dev/null || [[ $(lazygit --version) != *"$LAZYGIT_VERSION"* ]]; then
+    curl -LO "https://github.com/jesseduffield/lazygit/releases/download/v$LAZYGIT_VERSION/lazygit_${LAZYGIT_VERSION}_Darwin_${ARCH}.tar.gz"
+    tar xf "lazygit_${LAZYGIT_VERSION}_Darwin_${ARCH}.tar.gz" lazygit
+    sudo install lazygit /usr/local/bin/
+    rm "lazygit_${LAZYGIT_VERSION}_Darwin_${ARCH}.tar.gz" lazygit
+  fi
+
 else
   # Install ripgrep
   if ! command -v rg &> /dev/null; then
@@ -59,6 +68,14 @@ else
   # Install xclip
   if ! command -v xclip &> /dev/null; then
     sudo apt install -y xclip
+  fi
+
+  # Install lazygit
+  if ! command -v lazygit &> /dev/null || [[ $(lazygit --version) != *"$LAZYGIT_VERSION"* ]]; then
+    curl -LO "https://github.com/jesseduffield/lazygit/releases/download/v$LAZYGIT_VERSION/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+    tar xf "lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz" lazygit
+    sudo install lazygit /usr/local/bin/
+    rm "lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz" lazygit
   fi
 fi
 
