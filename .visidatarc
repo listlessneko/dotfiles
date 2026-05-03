@@ -1,0 +1,77 @@
+# ~/.visidatarc — gruvbox neutral theme for visidata 3.x
+# Single mode, no toggle. Warmer/amber accents.
+
+# Gruvbox neutral accents
+P = {'red': '#cc241d', 'green': '#98971a', 'yellow': '#d79921',
+     'blue': '#458588', 'purple': '#b16286', 'aqua': '#689d6a',
+     'orange': '#d65d0e'}
+
+BG, BG1, BG2 = '#282828', '#3c3836', '#504945'
+FG, FG0, GRAY = '#ebdbb2', '#fbf1c7', '#928374'
+
+# Menu uses ghostty's dim palette slots (vd's menu ignores hex bg)
+MENU_BG, MENU_RED, MENU_FG = 3, 1, 0
+
+# Base
+options.color_default       = f'{FG} on {BG}'
+options.color_default_hdr   = f"bold {P['yellow']} on {BG1}"
+options.color_current_hdr   = f"bold reverse {P['yellow']}"
+options.color_bottom_hdr    = f'underline {FG} on {BG}'
+
+# Top menu bar
+options.color_menu          = f'bold {MENU_FG} on {MENU_BG}'
+options.color_menu_active   = f'bold {MENU_BG} on {MENU_FG}'
+options.color_menu_spec     = f'bold {MENU_FG} on {MENU_RED}'
+options.color_menu_help     = f'italic {MENU_FG} on {MENU_BG}'
+
+# Status lines
+options.color_status            = f'{FG} on {BG1}'
+options.color_top_status        = f'{FG} on {BG1}'
+options.color_active_status     = f"bold {P['green']} on {BG1}"
+options.color_inactive_status   = f'{GRAY} on {BG1}'
+options.color_highlight_status  = f"bold {BG} on {P['green']}"
+options.color_keystrokes        = f"bold {P['orange']} on {BG1}"
+options.color_longname_status   = FG
+options.color_longname_guide    = GRAY
+
+# Rows
+options.color_current_row   = 'reverse'
+options.color_selected_row  = f'{BG} on {FG}'
+
+# Columns
+options.color_key_col       = f"bold {P['blue']}"
+options.color_current_col   = f'bold on {BG1}'
+options.color_current_cell  = f"bold {P['yellow']} on {BG1}"
+options.color_hidden_col    = GRAY
+options.color_column_sep    = f'{GRAY} on {BG}'
+
+# Notifications
+options.color_error          = f"bold {P['red']}"
+options.color_warning        = P['yellow']
+options.color_working        = P['green']
+options.color_match          = P['red']
+options.color_change_pending = f"reverse {P['yellow']}"
+options.color_add_pending    = P['green']
+options.color_delete_pending = P['red']
+options.color_note_pending   = f"bold {P['green']}"
+options.color_note_row       = P['yellow']
+options.color_note_type      = P['blue']
+
+# Editing
+options.color_edit_cell      = f'{FG0} on {BG2}'
+options.color_edit_unfocused = f'{GRAY} on {BG2}'
+
+# Sidebar / heading / palette
+options.color_sidebar        = f'{FG} on {BG1}'
+options.color_sidebar_title  = f"bold {P['yellow']} on {BG1}"
+options.color_heading        = f"bold {BG} on {P['yellow']}"
+options.color_cmdpalette     = f'{FG} on {BG2}'
+options.color_code           = f'{FG0} on {BG2}'
+
+# Misc
+options.color_aggregator     = f"bold {P['aqua']} on {BG1}"
+options.color_clickable      = f"bold {P['blue']}"
+options.color_currency_neg   = P['red']
+options.color_status_replay  = P['green']
+options.color_xword_active   = P['purple']
+options.color_guide_unwritten = GRAY

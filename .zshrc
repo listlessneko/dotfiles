@@ -18,6 +18,12 @@ export PROMPT='[%*] <%n> %1~/$(git_prompt) >> '
 export EDITOR=nvim
 export VISUAL=nvim
 
+# User-local scripts (bqvd, etc.)
+case ":$PATH:" in
+  *":$HOME/.local/bin:"*) ;;
+  *) export PATH="$HOME/.local/bin:$PATH" ;;
+esac
+
 function pwd {
     command pwd | sed "s|^$HOME|~|"
 }

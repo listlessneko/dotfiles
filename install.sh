@@ -44,6 +44,11 @@ if [[ "$OS" == "Darwin" ]]; then
     rm "lazygit_${LAZYGIT_VERSION}_Darwin_${ARCH}.tar.gz" lazygit
   fi
 
+  # Install visidata
+  if ! command -v vd &> /dev/null; then
+    brew install visidata
+  fi
+
 else
   # Install ripgrep
   if ! command -v rg &> /dev/null; then
@@ -77,6 +82,15 @@ else
     sudo install lazygit /usr/local/bin/
     rm "lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz" lazygit
   fi
+
+  # Install visidata (via pipx for an isolated user-level install)
+  if ! command -v vd &> /dev/null; then
+    if ! command -v pipx &> /dev/null; then
+      sudo apt install -y --no-install-recommends pipx
+      pipx ensurepath
+    fi
+    pipx install visidata
+  fi
 fi
 
 # Symlink nvim config
@@ -88,6 +102,9 @@ ln -sf "$DOTFILES_DIR/.bashrc" ~/.bashrc
 
 # Symlink zshrc
 ln -sf "$DOTFILES_DIR/.zshrc" ~/.zshrc
+
+# Symlink visidata config
+ln -sf "$DOTFILES_DIR/.visidatarc" ~/.visidatarc
 
 # Install TPM
 if [ ! -d ~/.tmux/plugins/tpm ]; then
@@ -103,3 +120,9 @@ ln -sf "$DOTFILES_DIR/.tmux.conf" ~/.tmux.conf
 # Symlink tmux scripts
 mkdir -p ~/.tmux/scripts
 ln -sf "$DOTFILES_DIR/tmux/main-vertical-right.sh" ~/.tmux/scripts/main-vertical-right.sh
+
+# Symlink user scripts (bqvd, etc.) into ~/.local/bin
+mkdir -p ~/.local/bin
+for script in "$DOTFILES_DIR"/bin/*; do
+  [ -f "$script" ] && ln -sf "$script" ~/.local/bin/"$(basename "$script")"
+done

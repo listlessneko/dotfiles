@@ -129,4 +129,10 @@ return {
     { "<leader>tf", "<cmd>tabnew %<CR>", desc = "Open buffer in new tab",   mode = "n" },
     { "<leader>t",  ":w !python3<CR>",   desc = "Run selected Python code", mode = "v" },
   },
+
+  -- (Q)uery — BigQuery via visidata
+  { "<leader>Q",
+    group = { name = "Query" },
+    { "<leader>Qr", ":BqvdRun<CR>", desc = "Run query in visidata", mode = { "n", "v" } },
+  },
 }
