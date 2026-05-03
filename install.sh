@@ -50,6 +50,14 @@ if [[ "$OS" == "Darwin" ]]; then
   fi
 
 else
+  # Forward TZ from SSH client (Coder only — workspace honors $TZ from Mac machine via SendEnv/AcceptEnv handshake)
+  if [[ "$CODER" == "true" ]]; then
+    if ! sudo grep -q '^AcceptEnv TZ$' /etc/ssh/sshd_config.d/10-tz-forward.conf 2>/dev/null; then
+      echo 'AcceptEnv TZ' | sudo tee /etc/ssh/sshd_config.d/10-tz-forward.conf > /dev/null
+      sudo systemctl reload ssh
+    fi
+  fi
+
   # Install ripgrep
   if ! command -v rg &> /dev/null; then
     sudo apt install -y ripgrep
