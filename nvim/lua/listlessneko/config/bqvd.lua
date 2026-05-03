@@ -16,13 +16,29 @@ function M.run(line1, line2)
   vim.cmd('tabnew')
   local buf = vim.api.nvim_get_current_buf()
   vim.cmd('terminal bqvd < ' .. vim.fn.shellescape(QUERY_FILE))
+  vim.b[buf].bqvd_running = true
   vim.cmd('startinsert')
+
+  local refocus_id = vim.api.nvim_create_autocmd({ 'BufEnter', 'WinEnter', 'FocusGained' }, {
+    callback = function()
+      if not vim.api.nvim_buf_is_valid(buf) then return end
+      if vim.api.nvim_get_current_buf() ~= buf then return end
+      if not vim.b[buf].bqvd_running then return end
+      vim.schedule(function()
+        if vim.api.nvim_get_current_buf() == buf and vim.b[buf].bqvd_running then
+          vim.cmd('startinsert')
+        end
+      end)
+    end,
+  })
 
   vim.api.nvim_create_autocmd('TermClose', {
     buffer = buf,
     once = true,
     callback = function()
       local exit_code = vim.v.event.status
+      vim.b[buf].bqvd_running = false
+      pcall(vim.api.nvim_del_autocmd, refocus_id)
       vim.schedule(function()
         if not vim.api.nvim_buf_is_valid(buf) then return end
         if exit_code == 0 then
