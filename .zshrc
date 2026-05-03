@@ -28,6 +28,7 @@ function pwd {
     command pwd | sed "s|^$HOME|~|"
 }
 
+alias dotfiles="coder dotfiles https://github.com/listlessneko/dotfiles" 
 alias ll="ls -la"
 alias editprofile="nvim ~/.zshrc"
 alias sourceprofile="source ~/.zshrc"
