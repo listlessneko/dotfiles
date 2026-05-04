@@ -51,4 +51,4 @@ vim.opt.signcolumn = 'yes' -- show sign column so that text doesn't shift
 -- windows and tabs
 vim.opt.splitright = true -- split vertical window to the right
 vim.opt.splitbelow = true -- spl.it horizontal window to the bottom
-vim.opt.showtabline = 0 -- always show tabs
+vim.opt.showtabline = 1 -- show tabline only when multiple tabs are open

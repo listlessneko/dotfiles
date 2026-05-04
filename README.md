@@ -47,6 +47,7 @@ Built on [lazy.nvim](https://github.com/folke/lazy.nvim). Requires Neovim 0.11+.
 - In-buffer markdown rendering via `render-markdown.nvim`
 - Git integration via `gitsigns.nvim` + `lazygit.nvim` + `diffview.nvim`
 - Debugging via `nvim-dap` + `nvim-dap-ui` + `nvim-dap-virtual-text` (codelldb adapter for C/C++/Rust)
+- Terminal management via `toggleterm.nvim` (float + horizontal split, persistent sessions)
 - AI coding via `opencode.nvim` (Linux only, guarded by executable check)
 - Theme: Catppuccin (custom colors)
 
@@ -131,6 +132,15 @@ Built on [lazy.nvim](https://github.com/folke/lazy.nvim). Requires Neovim 0.11+.
 | `<leader>x` | Close split |
 | `<C-w>m` | Window resize mode (h/j/k/l, any key exits) |
 | `<C-h/j/k/l>` | Navigate tmux/nvim panes |
+
+| Key | Action |
+|-----|--------|
+| `<C-t>` | Toggle float terminal |
+| `<leader>tf` | Float terminal |
+| `<leader>t-` | Horizontal split terminal |
+| `<leader>t\|` | Vertical split terminal (toggle) |
+| `<leader>tl` | List all buffers/terminals |
+| `<Esc><Esc>` | Exit terminal mode (keep window) |
 
 ## Tmux
 

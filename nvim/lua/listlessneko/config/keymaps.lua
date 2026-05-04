@@ -88,3 +88,6 @@ end, { desc = 'Window resize mode' })
 
 -- Clear search highlight
 vim.keymap.set('n', '<Esc>', ':nohlsearch<CR>', { silent = true, desc = 'Clear search highlight' })
+
+-- Exit terminal mode
+vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })

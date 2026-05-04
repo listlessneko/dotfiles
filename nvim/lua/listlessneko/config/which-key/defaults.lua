@@ -1,3 +1,23 @@
+local vertical_term_buf = nil
+
+local function toggle_vertical_term()
+  if vertical_term_buf and vim.api.nvim_buf_is_valid(vertical_term_buf) then
+    for _, win in ipairs(vim.api.nvim_list_wins()) do
+      if vim.api.nvim_win_get_buf(win) == vertical_term_buf then
+        vim.api.nvim_win_close(win, false)
+        return
+      end
+    end
+    vim.cmd("vsplit")
+    vim.api.nvim_win_set_buf(0, vertical_term_buf)
+    vim.cmd("startinsert")
+  else
+    vim.cmd("vsplit")
+    vim.cmd("terminal")
+    vertical_term_buf = vim.api.nvim_get_current_buf()
+  end
+end
+
 return {
   mode = { "n", "v" },
 
@@ -119,15 +139,24 @@ return {
   { "<leader>=", "<C-w>=",         desc = "Equal split sizes",  mode = "n" },
   { "<leader>x", "<cmd>close<CR>", desc = "Close split",        mode = "n" },
 
-  -- (t)ab
+  -- (t)erminal
   { "<leader>t",
+    group = { name = "Terminal" },
+    { "<leader>tf", "<cmd>1ToggleTerm direction=float<CR>",                                                             desc = "Float terminal",            mode = "n" },
+    { "<leader>t-", "<cmd>2ToggleTerm direction=horizontal<CR>",                                                     desc = "Horizontal split terminal", mode = "n" },
+    { "<leader>t|", toggle_vertical_term,                                                                               desc = "Vertical split terminal",   mode = "n" },
+    { "<leader>tl", function() require("telescope.builtin").buffers({ show_all_buffers = true }) end,                desc = "List all buffers/terminals", mode = "n" },
+    { "<leader>t",  ":w !python3<CR>",                           desc = "Run selected Python code",  mode = "v" },
+  },
+
+  -- (T)ab
+  { "<leader>T",
     group = { name = "Tab" },
-    { "<leader>to", "<cmd>tabnew<CR>",   desc = "Open new tab",             mode = "n" },
-    { "<leader>tw", "<cmd>tabclose<CR>", desc = "Close tab",                mode = "n" },
-    { "<leader>tn", "<cmd>tabn<CR>",     desc = "Next tab",                 mode = "n" },
-    { "<leader>tp", "<cmd>tabp<CR>",     desc = "Prev tab",                 mode = "n" },
-    { "<leader>tf", "<cmd>tabnew %<CR>", desc = "Open buffer in new tab",   mode = "n" },
-    { "<leader>t",  ":w !python3<CR>",   desc = "Run selected Python code", mode = "v" },
+    { "<leader>To", "<cmd>tabnew<CR>",   desc = "Open new tab",           mode = "n" },
+    { "<leader>Tw", "<cmd>tabclose<CR>", desc = "Close tab",              mode = "n" },
+    { "<leader>Tn", "<cmd>tabn<CR>",     desc = "Next tab",               mode = "n" },
+    { "<leader>Tp", "<cmd>tabp<CR>",     desc = "Prev tab",               mode = "n" },
+    { "<leader>Tf", "<cmd>tabnew %<CR>", desc = "Open buffer in new tab", mode = "n" },
   },
 
   -- (Q)uery — BigQuery via visidata
