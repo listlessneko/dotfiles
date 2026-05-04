@@ -4,10 +4,10 @@ set -euo pipefail
 sql=$(cat)
 [[ -z "${sql// }" ]] && { echo "bqvd: no SQL on stdin" >&2; exit 1; }
 
-bq query \
+printf '%s' "$sql" | bq query \
   --quiet \
   --use_legacy_sql=false \
   --format=csv \
   --max_rows="${BQVD_MAX_ROWS:-10000}" \
   ${BQVD_PROJECT:+--project_id="$BQVD_PROJECT"} \
-  -- "$sql" | vd -f csv
+  | vd -f csv
