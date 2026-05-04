@@ -14,3 +14,4 @@ nvim/.luarc.json
 nvim/.git/
 
 .claude/
+docs/
