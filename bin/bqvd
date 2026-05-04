@@ -10,4 +10,4 @@ bq query \
   --format=csv \
   --max_rows="${BQVD_MAX_ROWS:-10000}" \
   ${BQVD_PROJECT:+--project_id="$BQVD_PROJECT"} \
-  "$sql" | vd -f csv
+  -- "$sql" | vd -f csv
