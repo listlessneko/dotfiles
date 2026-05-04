@@ -145,7 +145,26 @@ return {
     { "<leader>tf", "<cmd>1ToggleTerm direction=float<CR>",                                                             desc = "Float terminal",            mode = "n" },
     { "<leader>t-", "<cmd>2ToggleTerm direction=horizontal<CR>",                                                     desc = "Horizontal split terminal", mode = "n" },
     { "<leader>t|", toggle_vertical_term,                                                                               desc = "Vertical split terminal",   mode = "n" },
-    { "<leader>tl", function() require("telescope.builtin").buffers({ show_all_buffers = true }) end,                desc = "List all buffers/terminals", mode = "n" },
+    { "<leader>tl", function()
+        local items = {}
+        for _, t in ipairs(require("toggleterm.terminal").get_all(true)) do
+          table.insert(items, { name = "Terminal " .. t.id, term = t })
+        end
+        if vertical_term_buf and vim.api.nvim_buf_is_valid(vertical_term_buf) then
+          table.insert(items, { name = "Vertical terminal", bufnr = vertical_term_buf })
+        end
+        vim.ui.select(items, {
+          prompt = "Terminals",
+          format_item = function(t) return t.name end,
+        }, function(choice)
+          if not choice then return end
+          if choice.term then
+            choice.term:toggle()
+          else
+            vim.api.nvim_set_current_buf(choice.bufnr)
+          end
+        end)
+      end, desc = "List terminals", mode = "n" },
     { "<leader>t",  ":w !python3<CR>",                           desc = "Run selected Python code",  mode = "v" },
   },
 
