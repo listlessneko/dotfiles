@@ -126,6 +126,14 @@ Built on [lazy.nvim](https://github.com/folke/lazy.nvim). Requires Neovim 0.11+.
 
 | Key | Action |
 |-----|--------|
+| `<leader>To` | Open new tab |
+| `<leader>Tw` | Close tab |
+| `<leader>Tn` | Next tab |
+| `<leader>Tp` | Prev tab |
+| `<leader>Tf` | Open buffer in new tab |
+
+| Key | Action |
+|-----|--------|
 | `<leader>\|` | Vertical split |
 | `<leader>-` | Horizontal split |
 | `<leader>=` | Equalize splits |
