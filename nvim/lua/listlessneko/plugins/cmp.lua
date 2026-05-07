@@ -9,6 +9,8 @@ return {
 
     -- Adds LSP completion capabilities
     "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-nvim-lsp-signature-help",
+    "hrsh7th/cmp-nvim-lua",
     "hrsh7th/cmp-path",
 
     -- Adds a number of user-friendly snippets
@@ -96,8 +98,7 @@ return {
         documentation = cmp.config.window.bordered(),
       },
       sources = {
-        { name = "copilot" },
-        { name = "nvim_lsp_signature_help"},
+        { name = "nvim_lsp_signature_help" },
         { name = "nvim_lsp" },
         { name = "nvim_lua" },
         { name = "luasnip" },
@@ -105,8 +106,6 @@ return {
         { name = "path" },
         { name = "calc" },
         { name = "emoji" },
-        { name = "treesitter" },
-        { name = "crates" },
         { name = "tmux" },
       },
       formatting = {
@@ -120,12 +119,10 @@ return {
             vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
             -- Source
             vim_item.menu = ({
-              copilot = "[Copilot]",
               nvim_lsp = "[LSP]",
               nvim_lua = "[Lua]",
               luasnip = "[LuaSnip]",
               buffer = "[Buffer]",
-              latex_symbols = "[LaTeX]",
             })[entry.source.name]
             return vim_item
           else
