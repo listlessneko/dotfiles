@@ -23,6 +23,12 @@ vim.opt.mouse = 'a' -- allow the mouse to be used in neovim
 vim.opt.list = true -- allows list option
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' } -- sets characters for the coresponding keys
 
+vim.opt.fillchars:append({
+  vert = '│', horiz = '─',
+  horizup = '┴', horizdown = '┬',
+  vertleft = '┤', vertright = '├', verthoriz = '┼',
+})
+
 -- tabs and indentation
 -- vim.opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
 vim.opt.shiftwidth = 2 -- 2 spaces for indent width
@@ -47,6 +53,7 @@ vim.opt.termguicolors = true
 vim.opt.background = 'dark' -- colorschemes that can belight or dark will be made dark
 
 vim.opt.signcolumn = 'yes' -- show sign column so that text doesn't shift
+vim.opt.laststatus = 3 -- single global statusline; lets `horiz` fillchar render between stacked splits
 
 -- windows and tabs
 vim.opt.splitright = true -- split vertical window to the right
