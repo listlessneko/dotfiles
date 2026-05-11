@@ -22,6 +22,7 @@ return {
     { "<leader>Dr", function() require("dap").run_last() end,                                                     desc = "Run Last" },
     { "<leader>Dq", function() require("dap").terminate() end,                                                    desc = "Terminate" },
     { "<leader>Du", function() require("dapui").toggle() end,                                                     desc = "Toggle UI" },
+    { "<leader>D=", function() require("dapui").open({ reset = true }) end,                                       desc = "Reset UI Layout" },
     { "<leader>De", function() require("dapui").eval() end,                                                       desc = "Eval Expression",     mode = { "n", "v" } },
     { "<F5>",       function() require("dap").continue() end,                                                     desc = "Debug: Continue" },
     { "<F10>",      function() require("dap").step_over() end,                                                    desc = "Debug: Step Over" },
