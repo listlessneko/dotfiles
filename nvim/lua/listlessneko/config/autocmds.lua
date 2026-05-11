@@ -35,6 +35,21 @@ vim.api.nvim_create_autocmd('VimEnter', {
   end,
 })
 
+-- Auto-reset dapui layout when terminal is resized or focus returns (tmux window switching squashes bottom panels)
+vim.api.nvim_create_autocmd({ 'FocusGained', 'VimResized' }, {
+  callback = function()
+    local dapui = package.loaded['dapui']
+    if not dapui then return end
+    for _, win in ipairs(vim.api.nvim_list_wins()) do
+      local name = vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(win))
+      if name:match('DAP ') or name:match('%[dap%-') then
+        dapui.open({ reset = true })
+        break
+      end
+    end
+  end,
+})
+
 -- Keep line wrapping on in diff windows (Vim disables it by default when 'diff' is set)
 vim.api.nvim_create_autocmd('OptionSet', {
   pattern = 'diff',

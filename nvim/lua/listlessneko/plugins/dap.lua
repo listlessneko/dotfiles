@@ -39,7 +39,7 @@ return {
       handlers = {},
     })
 
-    dapui.setup()
+    dapui.setup({ wrap = true })
     require("nvim-dap-virtual-text").setup({})
 
     vim.fn.sign_define("DapBreakpoint",          { text = "●", texthl = "DiagnosticError",  numhl = "" })
