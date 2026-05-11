@@ -122,6 +122,7 @@ Built on [lazy.nvim](https://github.com/folke/lazy.nvim). Requires Neovim 0.11+.
 | `<leader>Do` / `<F12>` | Step out |
 | `<leader>De` | Evaluate expression |
 | `<leader>Du` | Toggle debug UI |
+| `<leader>D=` | Reset debug UI layout (also auto-resets on focus/resize) |
 | `<leader>Dq` | Terminate |
 
 | Key | Action |
