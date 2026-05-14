@@ -15,6 +15,7 @@ return {
     { "<leader>D",  group = "Debug" },
     { "<leader>Db", function() require("dap").toggle_breakpoint() end,                                            desc = "Toggle Breakpoint" },
     { "<leader>DB", function() require("dap").set_breakpoint(vim.fn.input("Condition: ")) end,                    desc = "Conditional Breakpoint" },
+    { "<leader>Dx", function() require("dap").clear_breakpoints() end,                                           desc = "Clear All Breakpoints" },
     { "<leader>Dc", function() require("dap").continue() end,                                                     desc = "Continue / Start" },
     { "<leader>Dn", function() require("dap").step_over() end,                                                    desc = "Step Over" },
     { "<leader>Di", function() require("dap").step_into() end,                                                    desc = "Step Into" },
