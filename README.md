@@ -117,6 +117,7 @@ Built on [lazy.nvim](https://github.com/folke/lazy.nvim). Requires Neovim 0.11+.
 | `<leader>Dc` / `<F5>` | Start / continue |
 | `<leader>Db` | Toggle breakpoint |
 | `<leader>DB` | Conditional breakpoint |
+| `<leader>Dx` | Clear all breakpoints |
 | `<leader>Dn` / `<F10>` | Step over |
 | `<leader>Di` / `<F11>` | Step into |
 | `<leader>Do` / `<F12>` | Step out |
