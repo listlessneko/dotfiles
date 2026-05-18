@@ -44,7 +44,7 @@ return {
         end
 
         map("gd", vim.lsp.buf.definition, "Goto Definition")
-        map("gr", vim.lsp.buf.references, "Goto References")
+        map("gr", require("telescope.builtin").lsp_references, "Goto References")
         map("gi", vim.lsp.buf.implementation, "Goto Implementation")
         map("go", vim.lsp.buf.type_definition, "Type Definition")
         map("gl", vim.diagnostic.open_float, "Open Diagnostic Float")

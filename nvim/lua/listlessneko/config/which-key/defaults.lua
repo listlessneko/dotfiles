@@ -25,6 +25,7 @@ return {
   { "<leader>",
     group = { name = "Leader" },
     { "<leader>;", ":Alpha<CR>",                                                desc = "Dashboard" },
+    { "<leader>?", "<cmd>WhichKey<cr>",                                         desc = "Keymaps" },
     { "<leader>w", ":w!<CR>",                                                   desc = "Save",                          mode = "n" },
     { "<leader>W", "<cmd>noautocmd w<cr>",                                      desc = "Save without formatting" },
     { "<leader>q", ":confirm q<CR>",                                            desc = "Quit" },
