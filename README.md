@@ -58,6 +58,7 @@ Built on [lazy.nvim](https://github.com/folke/lazy.nvim). Requires Neovim 0.11+.
 
 | Key | Action |
 |-----|--------|
+| `<leader>?` | Show all keymaps (WhichKey) |
 | `<leader>w` | Save |
 | `<leader>f` | Find files (git-aware) |
 | `<leader>sf` | Find files (CWD) |
