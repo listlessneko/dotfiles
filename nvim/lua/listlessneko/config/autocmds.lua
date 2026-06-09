@@ -60,6 +60,14 @@ vim.api.nvim_create_autocmd('OptionSet', {
   end,
 })
 
+-- Disable listchars in Go (gofmt uses real tabs, which show as » arrows)
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'go',
+  callback = function()
+    vim.opt_local.list = false
+  end,
+})
+
 -- Enable spell checking for certain file types
 vim.api.nvim_create_autocmd(
 {'BufRead', 'BufNewFile'},
