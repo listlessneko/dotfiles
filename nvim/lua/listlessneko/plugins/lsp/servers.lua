@@ -42,7 +42,7 @@ return {
     filetypes = { "vim" },
   },
   ts_ls = {},
-  -- gopls = {},
+  gopls = {},
   pyright = {},
   -- golangci_lint_ls = {},
 
