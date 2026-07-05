@@ -52,7 +52,7 @@ Built on [lazy.nvim](https://github.com/folke/lazy.nvim). Requires Neovim 0.11+.
 - Theme: Catppuccin (custom colors)
 
 **LSP servers auto-installed:**
-`lua_ls`, `ts_ls`, `pyright`, `bashls`, `jsonls`, `yamlls`, `html`, `cssls`, `clangd`, `zls`, `terraformls`, `vimls`, `solidity_ls_nomicfoundation`
+`lua_ls`, `ts_ls`, `gopls`, `pyright`, `bashls`, `jsonls`, `yamlls`, `html`, `cssls`, `clangd`, `zls`, `terraformls`, `vimls`, `solidity_ls_nomicfoundation`
 
 **Key keymaps:**
 
