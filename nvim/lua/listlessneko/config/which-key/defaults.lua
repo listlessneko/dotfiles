@@ -182,6 +182,7 @@ return {
   -- (Q)uery — BigQuery via visidata
   { "<leader>Q",
     group = { name = "Query" },
-    { "<leader>Qr", ":BqvdRun<CR>", desc = "Run query in visidata", mode = { "n", "v" } },
+    { "<leader>Qr", ":BqvdRun<CR>",    desc = "Run query in visidata",  mode = { "n", "v" } },
+    { "<leader>Qd", ":BqvdDryRun<CR>", desc = "Dry-run (cost preview)", mode = { "n", "v" } },
   },
 }

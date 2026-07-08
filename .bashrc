@@ -1,4 +1,4 @@
-echo "Not a programmer..."
+echo "Not an engineer..."
 
 alias editprofile="nvim ~/.bashrc"
 alias sourceprofile="source ~/.bashrc"

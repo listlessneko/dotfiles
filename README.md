@@ -110,6 +110,7 @@ Built on [lazy.nvim](https://github.com/folke/lazy.nvim). Requires Neovim 0.11+.
 | `<leader>d` | Delete to void |
 | `<leader>p` | Paste over selection (void delete) |
 | `<leader>Qr` | Run buffer/selection in bqvd (BigQuery) |
+| `<leader>Qd` | Dry-run buffer/selection — preview bytes scanned + cost |
 | `J` / `K` | Move selected lines down / up |
 | `kj` / `jk` | Exit insert mode |
 

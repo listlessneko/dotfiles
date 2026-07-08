@@ -1,4 +1,4 @@
-echo "Not a programmer..."
+echo "Not an engineer..."
 # Get current git branch
 git_branch() {
   git symbolic-ref --short HEAD 2>/dev/null
