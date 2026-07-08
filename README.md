@@ -90,6 +90,8 @@ Built on [lazy.nvim](https://github.com/folke/lazy.nvim). Requires Neovim 0.11+.
 | `<leader>gL` | Last commit (diffview) |
 | `<leader>gP` | Arbitrary range diff (diffview) |
 | `<leader>gQ` | Close diffview |
+| `<leader>gy` | Yank git link |
+| `<leader>gY` | Open git link |
 
 | Key | Action |
 |-----|--------|
