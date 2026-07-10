@@ -11,7 +11,7 @@ Personal dotfiles for macOS and Linux. Managed via symlinks from this repo.
 
 | Config | Description |
 |--------|-------------|
-| `.bashrc` | Shell config, aliases, git prompt, NVM, opencode PATH |
+| `.bashrc` | Shell config, aliases, git prompt, NVM, opencode PATH, dotfiles alias |
 | `.zshrc` | Zsh config, PATH setup, dotfiles alias |
 | `.tmux.conf` | Tmux config with TPM plugins, pane navigation, clipboard |
 | `nvim/` | Neovim config built on lazy.nvim |
@@ -45,7 +45,7 @@ Built on [lazy.nvim](https://github.com/folke/lazy.nvim). Requires Neovim 0.11+.
 - File tree via `neo-tree.nvim`
 - Syntax highlighting via `nvim-treesitter`
 - In-buffer markdown rendering via `render-markdown.nvim`
-- Git integration via `gitsigns.nvim` + `lazygit.nvim` + `diffview.nvim`
+- Git integration via `gitsigns.nvim` + `lazygit.nvim` + `diffview.nvim` + `gitlinker.nvim`
 - Debugging via `nvim-dap` + `nvim-dap-ui` + `nvim-dap-virtual-text` (codelldb adapter for C/C++/Rust)
 - Terminal management via `toggleterm.nvim` (float + horizontal split, persistent sessions)
 - AI coding via `opencode.nvim` (Linux only, guarded by executable check)
