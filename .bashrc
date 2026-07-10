@@ -8,6 +8,7 @@ alias nvimconfig="cd ~/.config/nvim/ && nvim"
 alias nvimghostty="cd ~/.config/ghostty/ && nvim"
 alias nvimtmux="nvim ~/.tmux.conf"
 alias workspace="cd ~/workspace/"
+alias dotfiles="(cd ~/dotfiles && git pull && ./install.sh)"
 
 # If not running interactively, don't do anything
 case $- in
