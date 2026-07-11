@@ -167,7 +167,7 @@ Prefix: `Ctrl-Space`
 | `Ctrl-h/j/k/l` | Navigate panes |
 | `prefix h/j/k/l` | Resize panes |
 | `prefix z` / `prefix m` | Zoom pane (toggle fullscreen) |
-| `prefix t` | Toggle popup scratch terminal |
+| `prefix t` | Toggle popup scratch terminal (one persistent instance per tmux session, named `scratch-<session>`) |
 | `prefix r` | Reload config |
 | `M-1` .. `M-5` | Inverse main-vertical layout presets |
 
