@@ -166,6 +166,8 @@ Prefix: `Ctrl-Space`
 | `-` | Split vertical |
 | `Ctrl-h/j/k/l` | Navigate panes |
 | `prefix h/j/k/l` | Resize panes |
+| `prefix z` / `prefix m` | Zoom pane (toggle fullscreen) |
+| `prefix t` | Toggle popup scratch terminal |
 | `prefix r` | Reload config |
 | `M-1` .. `M-5` | Inverse main-vertical layout presets |
 
