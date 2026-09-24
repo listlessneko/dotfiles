@@ -64,6 +64,8 @@ Built on [lazy.nvim](https://github.com/folke/lazy.nvim). Requires Neovim 0.11+.
 | `<leader>sf` | Find files (CWD) |
 | `<leader>sg` | Live grep |
 | `<leader>ss` | Search current buffer |
+| `<leader>sw` | Grep word under cursor (project) |
+| `<leader>sW` | Grep word under cursor (current buffer) |
 | `<leader>o` | Open buffer picker |
 | `<Up>` / `<Down>` | Next / prev buffer (by number) |
 | `<Left>` / `<Right>` | Back / forward in buffer history |

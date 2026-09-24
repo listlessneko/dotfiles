@@ -65,6 +65,14 @@ return {
     { "<leader>sR", "<cmd>Telescope registers<cr>",                 desc = "Registers" },
     { "<leader>sg", "<cmd>Telescope live_grep<cr>",                 desc = "Live Grep" },
     { "<leader>sw", "<cmd>Telescope grep_string<cr>",               desc = "Grep String" },
+    { "<leader>sW",
+      function()
+        require("telescope.builtin").grep_string({
+          word_match = "-w",
+          search_dirs = { vim.fn.expand("%:p") },
+        })
+      end,
+      desc = "Grep String (current buffer)" },
     { "<leader>sk", "<cmd>Telescope keymaps<cr>",                   desc = "Keymaps" },
     { "<leader>sC", "<cmd>Telescope commands<cr>",                  desc = "Commands" },
     { "<leader>sl", "<cmd>Telescope resume<cr>",                    desc = "Resume last search" },
