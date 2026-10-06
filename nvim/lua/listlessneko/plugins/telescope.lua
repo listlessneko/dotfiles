@@ -30,6 +30,33 @@
       local actions = require('telescope.actions')
       -- local trouble = require('trouble.sources.telescope')
       local icons = require('listlessneko.config.icons')
+
+      -- Plenary cuts over-long border titles from the end, hiding the filename.
+      -- Wrap a previewer so its dynamic title is cut from the start instead.
+      local function left_truncate_title(new_previewer)
+        return function(...)
+          local previewer = new_previewer(...)
+          local dyn_title = previewer._dyn_title_fn
+          if not dyn_title then
+            return previewer
+          end
+          previewer._dyn_title_fn = function(self, entry)
+            local title = dyn_title(self, entry)
+            local winid = self.state and self.state.winid
+            if type(title) ~= "string" or not winid or not vim.api.nvim_win_is_valid(winid) then
+              return title
+            end
+            -- Matches plenary's limit: window width minus the padding spaces
+            local max_width = vim.api.nvim_win_get_width(winid) - 2
+            if max_width < 1 then
+              return title
+            end
+            return require('plenary.strings').truncate(title, max_width, "…", -1)
+          end
+          return previewer
+        end
+      end
+
       telescope.setup({
         defaults = {
           border = true,  -- Enable border
@@ -52,6 +79,8 @@
           },
           previewer = true,
           dynamic_preview_title = true,
+          file_previewer = left_truncate_title(require('telescope.previewers').vim_buffer_cat.new),
+          grep_previewer = left_truncate_title(require('telescope.previewers').vim_buffer_vimgrep.new),
           prompt_prefix = " " .. icons.ui.Telescope .. " ",
           selection_caret = icons.ui.BoldArrowRight .. " ",
           -- file_ignore_patterns = {
