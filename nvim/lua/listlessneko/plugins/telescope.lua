@@ -57,6 +57,36 @@
         end
       end
 
+      -- Absolute path of the selected entry, or nil (with a warning) if it isn't a file
+      local function selected_full_path()
+        local entry = require('telescope.actions.state').get_selected_entry()
+        -- Validate here: from_entry's own check errors on entries whose value is a table
+        local path = entry and require('telescope.from_entry').path(entry, false, false)
+        path = type(path) == "string" and vim.fn.expand(path) or nil
+        if not path or (vim.fn.filereadable(path) == 0 and vim.fn.isdirectory(path) == 0) then
+          vim.notify("Selected entry is not a file", vim.log.levels.WARN)
+          return nil
+        end
+        return vim.fn.fnamemodify(path, ":p")
+      end
+
+      -- Echo the full path, which titles and results may cut off
+      local function echo_full_path()
+        local path = selected_full_path()
+        if path then
+          vim.api.nvim_echo({ { path } }, false, {})
+        end
+      end
+
+      -- Copy the full path to the system clipboard
+      local function yank_full_path()
+        local path = selected_full_path()
+        if path then
+          vim.fn.setreg("+", path)
+          vim.api.nvim_echo({ { "Copied path to clipboard" } }, false, {})
+        end
+      end
+
       telescope.setup({
         defaults = {
           border = true,  -- Enable border
@@ -70,8 +100,13 @@
           mappings = {
             i = {
               ["<esc>"] = actions.close,
+              ["<M-p>"] = echo_full_path,
+              ["<M-y>"] = yank_full_path,
             },
-
+            n = {
+              ["p"] = echo_full_path,
+              ["y"] = yank_full_path,
+            },
           },
           -- path_display = formattedname,
           path_display = {
