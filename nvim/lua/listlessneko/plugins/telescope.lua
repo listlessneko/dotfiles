@@ -51,6 +51,7 @@
             "filename_first",
           },
           previewer = true,
+          dynamic_preview_title = true,
           prompt_prefix = " " .. icons.ui.Telescope .. " ",
           selection_caret = icons.ui.BoldArrowRight .. " ",
           -- file_ignore_patterns = {
