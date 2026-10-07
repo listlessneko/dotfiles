@@ -109,8 +109,10 @@
             },
           },
           -- path_display = formattedname,
+          -- "truncate" cuts paths from the start to fit the results window
           path_display = {
             "filename_first",
+            "truncate",
           },
           previewer = true,
           dynamic_preview_title = true,
