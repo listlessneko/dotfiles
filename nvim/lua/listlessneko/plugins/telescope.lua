@@ -87,6 +87,16 @@
         end
       end
 
+      -- LSP location pickers show "path:lnum:col" in a fixed-width column that
+      -- plenary cuts from the end, while path_display "truncate" sizes paths to
+      -- the whole results window. Cut from the start to fit the column instead.
+      local lsp_fname_width = 40
+      local function lsp_path_display(_, path)
+        path = vim.fn.fnamemodify(path, ":.")
+        -- Leave room for the ":lnum:col" suffix appended after the path
+        return require('plenary.strings').truncate(path, lsp_fname_width - 10, "…", -1)
+      end
+
       telescope.setup({
         defaults = {
           border = true,  -- Enable border
@@ -216,6 +226,8 @@
           lsp_references = {
             show_line = true,
             previewer = true,
+            fname_width = lsp_fname_width,
+            path_display = lsp_path_display,
           },
           treesitter = {
             show_line = true,
