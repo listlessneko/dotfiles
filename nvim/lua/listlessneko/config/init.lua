@@ -1,5 +1,6 @@
 require('listlessneko.config.options')
 require('listlessneko.config.keymaps')
 require('listlessneko.config.autocmds')
+require('listlessneko.config.filetypes')
 require('listlessneko.config.diagnostics')
 require('listlessneko.config.bqvd')
